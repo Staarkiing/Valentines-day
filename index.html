@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pour toi ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff9ecf, #ffd6ec);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    text-align: center;
+}
+
+.screen {
+    display: none;
+    padding: 30px;
+}
+
+.active {
+    display: block;
+}
+
+button {
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #ff3366;
+    color: white;
+}
+
+button:hover {
+    background: #e6005c;
+}
+
+img {
+    width: 250px;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+h1 {
+    color: #ff0066;
+}
+
+.flowers {
+    font-size: 60px;
+    animation: float 2s infinite alternate;
+}
+
+@keyframes float {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-20px); }
+}
+
+textarea {
+    width: 80%;
+    height: 80px;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ÉCRAN 1 -->
+<div class="screen active" id="screen1">
+    <h1>💌 J'ai quelque chose à te dire...</h1>
+    <button onclick="next(2)">Clique pour ouvrir</button>
+</div>
+
+<!-- ÉCRAN 2 -->
+<div class="screen" id="screen2">
+    <h1>Est-ce que tu veux être ma Valentine ? ❤️</h1>
+    <button onclick="next(3)">OUI 💖</button>
+    <button id="noBtn" onmouseover="moveNo()">NON 😏</button>
+</div>
+
+<!-- ÉCRAN 3 -->
+<div class="screen" id="screen3">
+    <h1>Pour toi 🌹🍫</h1>
+    <div class="flowers">🌹 🌹 🌹 🍫 🍫 🍫</div>
+    <button onclick="next(4)">Voir la suite</button>
+</div>
+
+<!-- ÉCRAN 4 -->
+<div class="screen" id="screen4">
+    <h1>Nos souvenirs 📸</h1>
+
+    <!-- 📸 REMPLACE LES LIENS PAR TES PHOTOS -->
+    <img src="https://via.placeholder.com/250x150">
+    <img src="https://via.placeholder.com/250x150">
+
+    <br>
+    <button onclick="next(5)">Continuer</button>
+</div>
+
+<!-- ÉCRAN 5 -->
+<div class="screen" id="screen5">
+    <h1>Un dernier mot pour toi ❤️</h1>
+
+    <!-- ✏️ MODIFIE TON MESSAGE ICI -->
+    <p>Depuis que tu es dans ma vie, tout est plus beau. Merci d’être toi.</p>
+
+    <h3>Écris-moi un message 💕</h3>
+    <textarea placeholder="Ton message ici..."></textarea>
+
+    <br>
+    <button onclick="alert('Je t’aime ❤️')">Envoyer 💌</button>
+</div>
+
+<script>
+function next(screenNumber) {
+    document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
+    });
+    document.getElementById("screen" + screenNumber).classList.add("active");
+}
+
+function moveNo() {
+    const btn = document.getElementById("noBtn");
+    btn.style.position = "absolute";
+    btn.style.top = Math.random() * window.innerHeight + "px";
+    btn.style.left = Math.random() * window.innerWidth + "px";
+}
+</script>
+
+</body>
+</html>
